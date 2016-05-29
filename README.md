@@ -1,2 +1,5 @@
 # adapt_wp_generator
-bash script wordpress generator
+
+###Dependencies
+
+wp-cli : https://wp-cli.org/
