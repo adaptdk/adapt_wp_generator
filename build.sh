@@ -101,15 +101,17 @@ done
 # assign navigaiton to primary location
 wp menu location assign main-navigation primary
 
-echo "================================================================="
-echo "Installation is complete. Your username/password is listed below."
-echo ""
-echo "Username: $wpuser"
-echo "Password: $password"
-echo ""
-echo "with the following plugins:"
-echo ""
+printf "\033[1;31m=================================================================\033[0m\n"
+printf "\033[1;33 Installation is complete. Your username/password is listed below.\033[0m\n"
+printf "\033[1;33 \033[0m\n"
+printf "\033[1;36mUsername: $wpuser\033[0m\n"
+printf "\033[1;36mPassword: $password\033[0m\n"
+printf "\033[1;33 \033[0m\n"
+printf "\033[0m with the following plugins:\033[0m\n"
+printf "\033[1;33 \033[0m\n"
 while read plugins
 do
-    echo "$plugins"
+    printf "\033[1;33 $plugins \033[0m\n"
 done < ../plugins.info
+
+printf "\033[1;31m=================================================================\033[0m\n"
