@@ -14,11 +14,21 @@ cd htdocs
 wp core download
 
 # create the wp-config file with our standard setup
-wp core config --dbname=$dbname --dbuser=$dbuser --dbpass=$dbpass --skip-check --extra-php <<PHP
-define( 'WP_DEBUG', true );
-define( 'DB_PORT, 8889');
-define( 'DISALLOW_FILE_EDIT', true );
+
+if [[ $dbport == "false" ]]
+then
+	wp core config --dbname=$dbname --dbuser=$dbuser --dbpass=$dbpass --skip-check --extra-php <<PHP
+	define( 'WP_DEBUG', true );
+	define( 'DISALLOW_FILE_EDIT', true );
 PHP
+else
+	wp core config --dbname=$dbname --dbuser=$dbuser --dbpass=$dbpass --skip-check --extra-php <<PHP
+	define( 'WP_DEBUG', true );
+	define( 'DB_PORT, ${dbport}');
+	define( 'DISALLOW_FILE_EDIT', true );
+PHP
+fi
+
 
 # parse the current directory name
 currentdirectory=${PWD##*/}
